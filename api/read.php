@@ -32,11 +32,11 @@
                 'category_name' => $category_name,
             ];
 
-        array_push($arrItems, $post_item);
-
-        echo json_encode($arrItems);
+            array_push($arrItems, $post_item);
         }
 
+    echo json_encode($arrItems);
+    
     } else {
         echo json_encode(['message' => 'Nenhum post encontrado']);
     }

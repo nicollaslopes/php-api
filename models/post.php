@@ -75,6 +75,7 @@
             $this->author = $row['author'];
             $this->category_id = $row['category_id'];
             $this->category_name = $row['category_name'];
+            
         }
 
         public function create(){
@@ -85,7 +86,7 @@
                         title = :title,    
                         body = :body,    
                         author = :author,    
-                        category_id = :category_id,        
+                        category_id = :category_id
                     ';
 
             $stmt = $this->con->prepare($query);
@@ -103,6 +104,7 @@
             if($stmt->execute()){
                 return true;
             } else {
+                
                 return false;
             }
 

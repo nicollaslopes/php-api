@@ -17,7 +17,6 @@
 
     if($num > 0){
         $arrItems = [];
-        $arrItems['data'] = [];
 
         while($row = $result->fetch(PDO::FETCH_ASSOC)){
             
@@ -36,7 +35,7 @@
         }
 
     echo json_encode($arrItems);
-    
+
     } else {
         echo json_encode(['message' => 'Nenhum post encontrado']);
     }

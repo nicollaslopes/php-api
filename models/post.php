@@ -110,4 +110,41 @@
 
         
         }
+
+        public function update(){
+
+            $query = '
+                    UPDATE ' . $this->table . '
+                    SET 
+                        title = :title,    
+                        body = :body,    
+                        author = :author,    
+                        category_id = :category_id
+                    WHERE 
+                        id = :id
+                    ';
+
+            $stmt = $this->con->prepare($query);
+
+            $this->title = htmlspecialchars(strip_tags($this->title));
+            $this->author = htmlspecialchars(strip_tags($this->author));
+            $this->body = htmlspecialchars(strip_tags($this->body));
+            $this->category_id = htmlspecialchars(strip_tags($this->category_id));
+            $this->id = htmlspecialchars(strip_tags($this->id));
+
+            $stmt->bindParam(':title', $this->title);
+            $stmt->bindParam(':author', $this->author);
+            $stmt->bindParam(':body', $this->body);
+            $stmt->bindParam(':category_id', $this->category_id);
+            $stmt->bindParam(':id', $this->id);
+            
+            if($stmt->execute()){
+                return true;
+            } else {
+                
+                return false;
+            }
+
+        
+        }
     }
